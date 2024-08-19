@@ -1,14 +1,18 @@
 #pragma once
 
-#include "Animal.hpp"
+#include <iostream>
+#include <string>
 
 class Brain
 {
-    private:
+    protected:
         std::string ideas[100];
     public:
         Brain();
-        Brain(const Brain &other);
-        Brain &operator=(const Brain &other);
+        Brain(Brain const &other);
+        Brain &operator=(Brain const &other);
         ~Brain();
+
+        void setIdea(std::string idea, int index);
+        std::string getIdea(int index) const;
 };

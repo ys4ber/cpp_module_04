@@ -1,26 +1,24 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 int main()
 {
-    Animal *animals[4];
-    for (int i = 0; i < 2; i++)
-    {
-        animals[i] = new Cat();
-        std::cout << "+++++++++++++++" << std::endl;
-    }
-    for (int i = 2; i < 4; i++)
-    {
-        animals[i] = new Dog();
-        std::cout << "+++++++++++++++" << std::endl;
-    }
-    for (int i = 0; i < 4; i++)
-    {
-        delete animals[i];
-        std::cout << "+++++++++++++++" << std::endl;
-    }
-    return 0;
-}
+    int na = 4;
+    Animal *Animals[na];
 
-    
+    for (int i = 0; i < na / 2; i++)
+    {
+        Animals[i] = new Cat();
+    }
+    for (int i = na/2 ; i < na; i++)
+    {
+        Animals[i] = new Dog();
+    }
+    std::cout << "------------" << std::endl;
+    for (int i = 0 ; i < na; i++)
+    {
+        delete Animals[i];
+    }
+}
