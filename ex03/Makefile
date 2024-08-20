@@ -2,7 +2,7 @@ NAME = ex02
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 
 SRC  = main.cpp AMateria.cpp ICharacter.cpp Ice.cpp Cure.cpp Character.cpp \
 	IMateriaSource.cpp MateriaSource.cpp

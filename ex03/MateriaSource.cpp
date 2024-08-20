@@ -12,16 +12,25 @@ MateriaSource::MateriaSource(MateriaSource const &other) : IMateriaSource(other)
 {
     for(int i = 0; i < 4; i++)
     {
-        _Templates[i] = other._Templates[i]->clone();
+        if (other._Templates[i])
+            _Templates[i] = other._Templates[i]->clone();
+        else
+            _Templates[i] = NULL;
     }
 }
 
 MateriaSource &MateriaSource::operator=(MateriaSource const &other)
 {
-    for (int i =0; i < 4; i++)
+    if(this != &other)
     {
-        delete _Templates[i];
-        _Templates[i] = other._Templates[i]->clone();
+        for(int i = 0; i < 4; i++)
+        {
+            delete _Templates[i];
+            if (other._Templates[i])
+                _Templates[i] = other._Templates[i]->clone();
+            else
+                _Templates[i] = NULL;
+        }
     }
     return *this;
 }
