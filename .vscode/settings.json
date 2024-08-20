@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "editor.cursorBlinking": "smooth",
+    "workbench.list.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "editor.smoothScrolling": true
+}

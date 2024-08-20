@@ -30,13 +30,8 @@ std::string const & AMateria::getType() const
     return _Type;
 }
 
-AMateria* AMateria::clone() const
-{
-    return nullptr;
-}
-
 void AMateria::use(ICharacter& target)
 {
-
+    (void)target;
 }
 
