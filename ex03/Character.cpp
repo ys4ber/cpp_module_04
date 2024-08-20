@@ -10,9 +10,11 @@ Character::Character(std::string const &name)
 Character::Character(Character const &other) : ICharacter(other)
 {
     _name = other._name;
-    for (int i = 0;i < 4; i++)
+    for(int i = 0; i < 4; i++)
     {
-        _inventory[i] = other._inventory[i]->clone();
+        _inventory[i] = NULL;
+        if (other._inventory[i])
+            _inventory[i] = other._inventory[i]->clone();
     }
 }
 
@@ -22,7 +24,9 @@ Character &Character::operator=(Character const &other)
     for (int i = 0;i < 4; i++)
     {
         delete _inventory[i];
-        _inventory[i] = other._inventory[i]->clone();
+        _inventory[i] = NULL;
+        if (other._inventory[i])
+            _inventory[i] = other._inventory[i]->clone();
     }
     return *this;
 }
@@ -40,20 +44,40 @@ std::string const &Character::getName() const
     return _name;
 }
 
-
-
 void Character::equip(AMateria *m)
 {
-(void)m;
+    if(!m)
+        return;
+    for(int i = 0; i < 4; i++)
+    {
+        if(!_inventory[i])
+        {
+            _inventory[i] = m;
+            break;
+        }
+    }
 }
 
 void Character::unequip(int idx)
 {
-    (void)idx;
+    if (idx >= 0 && idx < 4 && _inventory[idx])
+    {
+        _inventory[idx] = NULL;
+    }
+    else
+    {
+        std::cout << "Invalid index" << std::endl;
+    }
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-    (void )idx;
-    (void)target;
+    if (idx >= 0 && idx < 4 && _inventory[idx])
+    {
+        _inventory[idx]->use(target);
+    }
+    else
+    {
+        std::cout << "Invalid index" << std::endl;
+    }
 }

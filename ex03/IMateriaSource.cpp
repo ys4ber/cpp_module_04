@@ -2,7 +2,6 @@
 
 IMateriaSource::IMateriaSource()
 {
-    
 }
 
 IMateriaSource::IMateriaSource(IMateriaSource const &other)

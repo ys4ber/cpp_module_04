@@ -36,11 +36,26 @@ MateriaSource::~MateriaSource()
 
 void MateriaSource::learnMateria(AMateria *m)
 {
-    (void)m;
+    if (!m)
+        return;
+    for (int i = 0; i < 4 ;i++)
+    {
+        if(!_Templates[i]) 
+        {
+            _Templates[i] = m;
+            break;
+        }
+    }
 }
 
 AMateria* MateriaSource::createMateria(std::string const &type)
 {
-    (void)type;
+    for (int i = 0; i < 4 ; i++)
+    {
+        if(_Templates[i] && _Templates[i]->getType() == type)
+        {
+            return (_Templates[i]->clone());
+        }
+    }
     return NULL;
 }

@@ -12,7 +12,8 @@ Ice::Ice(Ice const &other) : AMateria(other)
 
 Ice & Ice::operator=(Ice const & other)
 {
-    AMateria::operator=(other);
+    if (this != &other)
+        AMateria::operator=(other);
     return *this;
 }
 
