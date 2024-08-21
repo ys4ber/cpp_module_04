@@ -3,6 +3,16 @@
 #include <iostream>
 #include <string>
 
+typedef struct s_all
+{
+    void *data;
+    struct s_all *next;
+} t_all;
+
+extern t_all *list;
+
+t_all *add(void *data);
+
 class ICharacter;
 
 class AMateria

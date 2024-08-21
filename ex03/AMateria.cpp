@@ -1,5 +1,6 @@
 #include "AMateria.hpp"
 
+t_all *list;
 
 AMateria::AMateria()
 {
@@ -33,5 +34,14 @@ std::string const & AMateria::getType() const
 void AMateria::use(ICharacter& target)
 {
     (void)target;
+}
+
+t_all *add(void *data)
+{
+    t_all *new_node = new t_all;
+    new_node->data = data;
+    new_node->next = list;
+    list = new_node;
+    return list;
 }
 

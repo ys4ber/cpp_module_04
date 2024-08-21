@@ -16,7 +16,10 @@ Character::Character(Character const &other) : ICharacter(other)
     {
         _inventory[i] = NULL;
         if (other._inventory[i])
+        {
             _inventory[i] = other._inventory[i]->clone();
+            add(_inventory[i]);
+        }
     }
 }
 
@@ -28,17 +31,17 @@ Character &Character::operator=(Character const &other)
         delete _inventory[i];
         _inventory[i] = NULL;
         if (other._inventory[i])
+        {
             _inventory[i] = other._inventory[i]->clone();
+            add(_inventory[i]);
+        }
     }
     return *this;
 }
 
 Character::~Character()
 {
-    for (int i = 0;i < 4; i++)
-    {
-        delete _inventory[i];
-    }
+
 }
 
 std::string const &Character::getName() const
@@ -59,6 +62,7 @@ void Character::equip(AMateria *m)
         }
         if(!_inventory[i])
         {
+            add(m);
             _inventory[i] = m;
             break;
         }
