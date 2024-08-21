@@ -4,6 +4,8 @@
 #include "AMateria.hpp"
 
 
+extern AMateria *copy[4];
+
 class Character : public ICharacter
 {
     private:

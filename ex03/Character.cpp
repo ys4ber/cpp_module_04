@@ -1,5 +1,7 @@
 #include "Character.hpp"
 
+AMateria *copy[4] = {NULL, NULL, NULL, NULL};
+
 Character::Character(std::string const &name)
 {
     _name = name;
@@ -50,6 +52,11 @@ void Character::equip(AMateria *m)
         return;
     for(int i = 0; i < 4; i++)
     {
+        if(_inventory[i] == m)
+        {
+            std::cout << "Already equipped" << std::endl;
+            return;
+        }
         if(!_inventory[i])
         {
             _inventory[i] = m;
@@ -62,6 +69,7 @@ void Character::unequip(int idx)
 {
     if (idx >= 0 && idx < 4 && _inventory[idx])
     {
+        copy[idx] = _inventory[idx];
         _inventory[idx] = NULL;
     }
     else
